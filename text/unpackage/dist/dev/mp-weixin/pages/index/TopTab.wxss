@@ -27,18 +27,31 @@
 .toptab_view.data-v-7a12cc76 {
   width: 750rpx;
 }
-.toptab_view .toptab.data-v-7a12cc76 {
-  width: 750rpx;
-  height: 60rpx;
-  position: relative;
+.toptab_view .tab_fixed.data-v-7a12cc76 {
+  z-index: 2;
+  position: -webkit-sticky;
+  position: sticky;
+  box-sizing: border-box;
+  top: 0px;
+  background-color: #fff;
+}
+.toptab_view .search.data-v-7a12cc76 {
+  width: 97%;
+  margin-top: 10rpx;
 }
 .content.data-v-7a12cc76 {
   width: 100%;
+  z-index: 1;
 }
-.content view.data-v-7a12cc76 {
+.content .task_view.data-v-7a12cc76 {
+  z-index: 99999;
+}
+.demo-uni-row.data-v-7a12cc76 {
+  margin-bottom: 10px;
+  /* QQ、字节小程序文档写有 :host，但实测不生效 */
+  /* 百度小程序没有 :host，需要设置block */
+}
+.data-v-7a12cc76 .segmented-control {
   width: 100%;
-}
-.content .Task.data-v-7a12cc76 {
-  height: 100rpx;
 }
 

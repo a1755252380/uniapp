@@ -27,7 +27,6 @@
 .search_view.data-v-fcf45f6e {
   width: 750rpx;
   background-color: #5EAE3D;
-  margin-top: 10rpx;
 }
 .data-v-fcf45f6e .uni-searchbar__cancel {
   color: #fff;

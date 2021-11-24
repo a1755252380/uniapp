@@ -18,7 +18,8 @@
 	.search_view{
 		width: 750rpx;
 		background-color: #5EAE3D;
-		margin-top: 10rpx;
+	
+		
 		
 	}
 /deep/.uni-searchbar__cancel{

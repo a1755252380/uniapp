@@ -1,14 +1,15 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/admin/admin"
+    "pages/admin/admin",
+    "pages/Task_detail/detail",
+    "pages/Task_detail/upload"
   ],
   "subPackages": [],
   "window": {
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#5EAE3D",
-    "backgroundColor": "#5EAE3D"
+    "backgroundColor": "#5EAE3D",
+    "onReachBottomDistance": 10
   },
   "tabBar": {
     "backgroundColor": "#F7F7FA",

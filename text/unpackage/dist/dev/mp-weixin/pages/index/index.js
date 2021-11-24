@@ -136,10 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var toptab = function toptab() {__webpack_require__.e(/*! require.ensure | pages/index/TopTab */ "pages/index/TopTab").then((function () {return resolve(__webpack_require__(/*! ./TopTab.vue */ 26));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
-
-
-
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var toptab = function toptab() {__webpack_require__.e(/*! require.ensure | pages/index/TopTab */ "pages/index/TopTab").then((function () {return resolve(__webpack_require__(/*! ./TopTab.vue */ 42));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -147,14 +144,45 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 {
   data: function data() {
-    return {};
+    var data = { type: '快', title: '测试1', num: '1', time: '00天18小时44分截至', fenshu: '1积分', baifenbi: '10' };
+    return {
+      type: 0,
+      more: 'more',
+      data1: new Array(15).fill(data),
+      data2: new Array(8).fill(data),
+      data3: new Array(5).fill(data) };
 
   },
-  onLoad: function onLoad() {
+  onLoad: function onLoad() {},
+  onReachBottom: function onReachBottom() {var _this = this;
+    console.log('加载');
+    if (this.type === 0) {
+      this.more = 'loading';
+      for (var i = 0; i <= 10; i++) {
+        this.data1.push({ type: '慢', title: '测试2', num: '1', time: '00天18小时44分截至', fenshu: '1积分', baifenbi: '10' });
+      }
 
+      setTimeout(function () {
+        _this.more = 'noMore';
+      }, 3000);
+    } else if (this.type === 1) {
+      this.more = 'loading';
+      setTimeout(function () {
+        _this.more = 'noMore';
+      }, 3000);
+    } else if (this.type === 2) {
+      this.more = 'loading';
+      setTimeout(function () {
+        _this.more = 'noMore';
+      }, 3000);
+    }
   },
-  methods: {},
-
+  methods: {
+    //接收传过来的是哪种类型
+    Receivetype: function Receivetype(type) {
+      this.type = type;
+      this.more = 'more';
+    } },
 
   components: {
     toptab: toptab } };exports.default = _default;

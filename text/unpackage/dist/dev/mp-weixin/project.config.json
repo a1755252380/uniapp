@@ -24,8 +24,19 @@
       "list": []
     },
     "miniprogram": {
-      "current": -1,
-      "list": []
+      "current": 0,
+      "list": [
+        {
+          "name": "任务详细",
+          "id": 0,
+          "pathName": "pages/Task_detail/detail"
+        },
+        {
+          "name": "提交任务",
+          "id": 1,
+          "pathName": "pages/Task_detail/upload"
+        }
+      ]
     }
   }
 }

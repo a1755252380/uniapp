@@ -11,13 +11,37 @@
 			"style": {
 				"navigationBarTitleText": "个人中心"
 			}
+		},
+		{
+			"path": "pages/Task_detail/detail",
+			"style": {
+				"navigationBarTitleText": "任务详细"
+			}
+		},
+		{
+			"path": "pages/Task_detail/upload",
+			"style": {
+				"navigationBarTitleText": "提交任务"
+			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "#fff",
-		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#5EAE3D",
-		"backgroundColor": "#5EAE3D"
+		"backgroundColor": "#5EAE3D",
+		"onReachBottomDistance":10
+	},
+	"condition":{
+		"current":0,
+		"list":[
+			{
+				"name":"任务详细",
+				"path":"pages/Task_detail/detail"
+			},
+			{
+				"name":"提交任务",
+				"path":"pages/Task_detail/upload"
+			}
+		]
 	},
 	"tabBar":{
 		"backgroundColor":"#F7F7FA",

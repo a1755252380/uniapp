@@ -1,1 +1,1 @@
-<view class="content"><toptab vue-id="8dd740cc-1" bind:__l="__l"></toptab></view>
+<view class="content"><toptab vue-id="8dd740cc-1" more="{{more}}" data1="{{data1}}" data2="{{data2}}" data3="{{data3}}" data-event-opts="{{[['^Receivetype',[['Receivetype']]]]}}" bind:Receivetype="__e" bind:__l="__l"></toptab></view>
