@@ -136,26 +136,28 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var toptab = function toptab() {__webpack_require__.e(/*! require.ensure | pages/index/TopTab */ "pages/index/TopTab").then((function () {return resolve(__webpack_require__(/*! ./TopTab.vue */ 26));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+
+
+
+
+
+
+
+
 {
   data: function data() {
-    return {
-      title: 'Hello' };
+    return {};
 
   },
   onLoad: function onLoad() {
 
   },
-  methods: {} };exports.default = _default;
+  methods: {},
+
+
+  components: {
+    toptab: toptab } };exports.default = _default;
 
 /***/ }),
 /* 18 */

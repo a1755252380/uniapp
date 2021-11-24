@@ -1,0 +1,1 @@
+<view class="search_view data-v-fcf45f6e"><uni-search-bar class="seach data-v-fcf45f6e" vue-id="a1968c46-1" placeholder="搜索" radius="{{100}}" bind:__l="__l"></uni-search-bar></view>
