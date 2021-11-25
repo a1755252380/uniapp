@@ -1,0 +1,1 @@
+<view class="data-v-d1e511be"><uni-fab vue-id="4aa1ee05-1" pattern="{{pattern}}" horizontal="right" vertical="bottom" popMenu="false" data-event-opts="{{[['^fabClick',[['toTop']]]]}}" bind:fabClick="__e" class="data-v-d1e511be" bind:__l="__l"></uni-fab></view>

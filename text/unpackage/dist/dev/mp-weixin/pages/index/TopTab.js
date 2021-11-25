@@ -211,7 +211,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     itemclick: function itemclick(index) {
       console.log(1);
-      uni.switchTab({
+      uni.navigateTo({
         url: '/pages/Task_detail/detail' });
 
     } },

@@ -47,7 +47,7 @@
 			<view class="col_copy">测试</view>
 		</view>
 		<uni-popup ref="popup" type="uni-popup-dialog"><uni-popup-dialog mode="base" message="复制成功!" :duration="2000" :before-close="true"></uni-popup-dialog></uni-popup>
-		<view class="btn_upload" hover-class="btn_upload_hover" hover-start-time=5 hover-stay-time=30>上传截图</view>
+		<view class="btn_upload" @click="btnupload" hover-class="btn_upload_hover" hover-start-time=5 hover-stay-time=30>上传截图</view>
 	</view>
 </template>
 
@@ -81,6 +81,14 @@ export default {
 			// 		});
 			// 	}
 			// });
+		},
+		
+		
+		//点击上传截图跳转
+		btnupload(){
+			uni.navigateTo({
+				url:"/pages/Task_detail/upload"
+			})
 		}
 	}
 };

@@ -248,6 +248,14 @@ var _default =
       // 		});
       // 	}
       // });
+    },
+
+
+    //点击上传截图跳转
+    btnupload: function btnupload() {
+      uni.navigateTo({
+        url: "/pages/Task_detail/upload" });
+
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

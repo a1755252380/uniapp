@@ -1,8 +1,10 @@
 <template>
-	<view class="content"><toptab :more="more" :data1="data1" :data2="data2" :data3="data3" @Receivetype="Receivetype"></toptab></view>
+	<view class="content"><toptab :more="more" :data1="data1" :data2="data2" :data3="data3" @Receivetype="Receivetype"></toptab>
+	<fad></fad></view>
 </template>
 
 <script>
+	import fad from "./fab.vue"
 import toptab from './TopTab.vue';
 export default {
 	data() {
@@ -47,7 +49,7 @@ export default {
 		}
 	},
 	components: {
-		toptab
+		toptab,fad
 	}
 };
 </script>

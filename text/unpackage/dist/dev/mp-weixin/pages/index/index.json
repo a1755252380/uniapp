@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "任务中心",
   "usingComponents": {
-    "toptab": "/pages/index/TopTab"
+    "toptab": "/pages/index/TopTab",
+    "fad": "/pages/index/fab"
   }
 }

@@ -69,7 +69,7 @@ export default {
 		},
 		itemclick(index){
 			console.log(1)
-			uni.switchTab({
+			uni.navigateTo({
 			    url: '/pages/Task_detail/detail'
 			});
 		}

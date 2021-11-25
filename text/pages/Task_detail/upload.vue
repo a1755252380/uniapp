@@ -98,9 +98,12 @@ export default {
 .btn_view{
 	z-index: 3;
 	width: 750rpx;
-	position: fixed;
+	display: flex;
+	justify-content: center;
+	position: sticky;
 	bottom: 0;
 	text-align: center;
+	background-color: #FFFFFF;
 	.btn{
 		font-size: 25rpx;
 		display: inline-block;
