@@ -24,7 +24,48 @@
 				"navigationBarTitleText": "提交任务"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/admin/myScore/myScore",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的积分",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/admin/myTask/myTask",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的任务",
+                "enablePullDownRefresh": false
+            }
+        },
+		{
+			"path":"pages/admin/myScore/scoreRecord",
+			"style":{
+				"navigationBarTitleText":"积分记录"
+			}
+		},
+		{
+			"path":"pages/admin/myScore/scoreRule",
+			"style":{
+				"navigationBarTitleText":"积分规则"
+			}
+		},
+		{
+			"path":"pages/admin/myScore/withdrawal",
+			"style":{
+				"navigationBarTitleText":"兑换提现"
+			}
+		},
+		{
+			"path":"pages/admin/myScore/withdrawalRecord",
+			"style":{
+				"navigationBarTitleText":"兑换记录"
+			}
+		}
+    ],
 	"globalStyle": {
 		"navigationBarBackgroundColor": "#5EAE3D",
 		"backgroundColor": "#5EAE3D",

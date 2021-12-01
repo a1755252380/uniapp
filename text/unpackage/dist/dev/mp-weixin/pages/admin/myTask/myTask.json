@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的任务",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "seach": "/pages/compoent/seach",
+    "fab": "/pages/index/fab"
+  }
+}

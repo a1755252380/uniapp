@@ -5,7 +5,7 @@
 	            horizontal="right"
 	            vertical="bottom"
 				popMenu="false"
-@fabClick="toTop"
+				@fabClick="toTop"
 	        ></uni-fab>
 	    </view>
 </template>

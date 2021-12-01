@@ -3,7 +3,13 @@
     "pages/index/index",
     "pages/admin/admin",
     "pages/Task_detail/detail",
-    "pages/Task_detail/upload"
+    "pages/Task_detail/upload",
+    "pages/admin/myScore/myScore",
+    "pages/admin/myTask/myTask",
+    "pages/admin/myScore/scoreRecord",
+    "pages/admin/myScore/scoreRule",
+    "pages/admin/myScore/withdrawal",
+    "pages/admin/myScore/withdrawalRecord"
   ],
   "subPackages": [],
   "window": {
@@ -30,5 +36,6 @@
       }
     ]
   },
-  "usingComponents": {}
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
 }

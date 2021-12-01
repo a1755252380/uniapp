@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "兑换记录",
+  "usingComponents": {
+    "nav-bar": "/pages/compoent/navBar",
+    "fab": "/pages/index/fab"
+  }
+}
