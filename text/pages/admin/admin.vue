@@ -13,6 +13,9 @@
 			<view class="item" @click="gotoMyTask">
 				我的任务
 			</view>
+			<view class="item" @click="gotoSell">
+				分销中心
+			</view>
 		</view>
 	</view>
 </template>
@@ -29,7 +32,13 @@
 				uni.navigateTo({
 					url: "/pages/admin/myTask/myTask"
 				})
+			},
+			gotoSell(){
+				uni.navigateTo({
+					url:'/pages/admin/inviteFriends/inviteFriends'
+				})
 			}
+			
 		}
 	}
 </script>
@@ -46,7 +55,8 @@
 			height: 140rpx;
 			border: 1px solid #f2f2f2;
 			border-radius: 60rpx;
-			background: url(../../static/img/icon/tab2-active.png) no-repeat center center;
+			background: url(../../static/img/icon/tab2.png) no-repeat center center;
+			background-color: #f2f2f2;
 			background-size: cover;
 			margin: 5px 10px 5px 0;
 		}

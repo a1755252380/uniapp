@@ -96,19 +96,19 @@ var components
 try {
   components = {
     uniRow: function() {
-      return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-row/uni-row */ "node-modules/@dcloudio/uni-ui/lib/uni-row/uni-row").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-row/uni-row.vue */ 96))
+      return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-row/uni-row */ "node-modules/@dcloudio/uni-ui/lib/uni-row/uni-row").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-row/uni-row.vue */ 100))
     },
     uniCol: function() {
-      return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-col/uni-col */ "node-modules/@dcloudio/uni-ui/lib/uni-col/uni-col").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-col/uni-col.vue */ 103))
+      return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-col/uni-col */ "node-modules/@dcloudio/uni-ui/lib/uni-col/uni-col").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-col/uni-col.vue */ 107))
     },
     uniIcons: function() {
-      return Promise.all(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-icons/uni-icons.vue */ 110))
+      return Promise.all(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/@dcloudio/uni-ui/lib/uni-icons/uni-icons")]).then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-icons/uni-icons.vue */ 114))
     },
     uniPopup: function() {
-      return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup */ "node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-popup/uni-popup.vue */ 118))
+      return __webpack_require__.e(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup */ "node-modules/@dcloudio/uni-ui/lib/uni-popup/uni-popup").then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-popup/uni-popup.vue */ 122))
     },
     uniPopupDialog: function() {
-      return Promise.all(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-popup-dialog/uni-popup-dialog */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/@dcloudio/uni-ui/lib/uni-popup-dialog/uni-popup-dialog")]).then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-popup-dialog/uni-popup-dialog.vue */ 125))
+      return Promise.all(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-popup-dialog/uni-popup-dialog */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/@dcloudio/uni-ui/lib/uni-popup-dialog/uni-popup-dialog")]).then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-popup-dialog/uni-popup-dialog.vue */ 129))
     }
   }
 } catch (e) {

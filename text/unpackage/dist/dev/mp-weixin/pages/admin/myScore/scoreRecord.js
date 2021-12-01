@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/compoent/navBar */ "pages/compoent/navBar").then((function () {return resolve(__webpack_require__(/*! ../../compoent/navBar.vue */ 257));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var fab = function fab() {__webpack_require__.e(/*! require.ensure | pages/index/fab */ "pages/index/fab").then((function () {return resolve(__webpack_require__(/*! ../../index/fab.vue */ 82));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var navBar = function navBar() {__webpack_require__.e(/*! require.ensure | pages/compoent/navBar */ "pages/compoent/navBar").then((function () {return resolve(__webpack_require__(/*! ../../compoent/navBar.vue */ 162));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var fab = function fab() {__webpack_require__.e(/*! require.ensure | pages/index/fab */ "pages/index/fab").then((function () {return resolve(__webpack_require__(/*! ../../index/fab.vue */ 86));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

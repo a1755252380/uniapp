@@ -4,7 +4,7 @@
 	            :pattern="pattern"
 	            horizontal="right"
 	            vertical="bottom"
-				popMenu="false"
+				:popMenu="false"
 				@fabClick="toTop"
 	        ></uni-fab>
 	    </view>
