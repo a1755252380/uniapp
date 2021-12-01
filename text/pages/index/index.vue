@@ -6,6 +6,7 @@
 <script>
 	import fad from "./fab.vue"
 import toptab from './TopTab.vue';
+import {encryptDes,decryptDes} from "../../static/js/DES.js"
 export default {
 	data() {
 		const data = { type: '快', title: '测试1', num: '1', time: '00天18小时44分截至', fenshu: '1积分', baifenbi: '10' };
@@ -17,7 +18,18 @@ export default {
 			data3: new Array(5).fill(data)
 		};
 	},
-	onLoad() {},
+	onLoad() {
+		console.log(encryptDes)
+		// uni.request({
+		//     url: this.$store.state.url+"/taskList", //仅为示例，并非真实接口地址。
+		//    method:"POST",
+		//     headers: encryptDes,
+		//     success: (res) => {
+		//         console.log(res.data);
+		    
+		//     }
+		// });
+	},
 	onReachBottom() {
 		console.log('加载');
 		if (this.type === 0) {
