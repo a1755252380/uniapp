@@ -6,6 +6,7 @@
 <script>
 	import fad from "./fab.vue"
 import toptab from './TopTab.vue';
+
 export default {
 	data() {
 		const data = { type: '快', title: '测试1', num: '1', time: '00天18小时44分截至', fenshu: '1积分', baifenbi: '10' };
@@ -17,7 +18,10 @@ export default {
 			data3: new Array(5).fill(data)
 		};
 	},
-	onLoad() {},
+	onLoad() {
+		console.log(encryptDes)
+	
+	},
 	onReachBottom() {
 		console.log('加载');
 		if (this.type === 0) {
