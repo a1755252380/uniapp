@@ -24,7 +24,6 @@ export const encryptDes = () => {
     });
 
     var data = {
-		"Content-Type": "application/json",
         'APP_Key': APP_Key,
         'APP_scode': encrypted.toString()
     };
