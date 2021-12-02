@@ -13,6 +13,7 @@
 </template>
 
 <script>
+	import {Register} from '../../../static/js/api.js'
 	export default {
 		data() {
 			return {
@@ -21,9 +22,10 @@
 		},
 		methods: {
 			registered(){
-				uni.showToast({
-					title:'注册成功'
-				})
+				// uni.showToast({
+				// 	title:'注册成功'
+				// })
+				Register('xxx','aa123456','12345678','123456')
 			}
 		}
 	}

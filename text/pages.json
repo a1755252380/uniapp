@@ -2,30 +2,51 @@
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
+			"name":"index",
+			"meta":{
+				"title":"首页",
+				"needLogin":"true"
+			},
 			"style": {
 				"navigationBarTitleText": "任务中心"
 			}
 		},
 		{
 			"path": "pages/admin/admin",
+			"name":"",
+			"meta":{
+				"title":""
+			},
 			"style": {
 				"navigationBarTitleText": "个人中心"
 			}
 		},
 		{
 			"path": "pages/Task_detail/detail",
+			"name":"",
+			"meta":{
+				"title":""
+			},
 			"style": {
 				"navigationBarTitleText": "任务详细"
 			}
 		},
 		{
 			"path": "pages/Task_detail/upload",
+			"name":"",
+			"meta":{
+				"title":""
+			},
 			"style": {
 				"navigationBarTitleText": "提交任务"
 			}
 		}
 	    ,{
             "path" : "pages/admin/myScore/myScore",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "我的积分",
@@ -35,6 +56,10 @@
         }
         ,{
             "path" : "pages/admin/myTask/myTask",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "我的任务",
@@ -43,30 +68,50 @@
         },
 		{
 			"path":"pages/admin/myScore/scoreRecord",
+			"name":"",
+			"meta":{
+				"title":""
+			},
 			"style":{
 				"navigationBarTitleText":"积分记录"
 			}
 		},
 		{
 			"path":"pages/admin/myScore/scoreRule",
+			"name":"",
+			"meta":{
+				"title":""
+			},
 			"style":{
 				"navigationBarTitleText":"积分规则"
 			}
 		},
 		{
 			"path":"pages/admin/myScore/withdrawal",
+			"name":"",
+			"meta":{
+				"title":""
+			},
 			"style":{
 				"navigationBarTitleText":"兑换提现"
 			}
 		},
 		{
 			"path":"pages/admin/myScore/withdrawalRecord",
+			"name":"",
+			"meta":{
+				"title":""
+			},
 			"style":{
 				"navigationBarTitleText":"兑换记录"
 			}
 		}
         ,{
             "path" : "pages/login/login",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "登陆",
@@ -76,6 +121,10 @@
         }
         ,{
             "path" : "pages/login/registerPage/registerPage",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "注册",
@@ -85,6 +134,10 @@
         }
         ,{
             "path" : "pages/login/forgetPwd/forgetPwd",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "验证信息",
@@ -94,6 +147,10 @@
         }
         ,{
             "path" : "pages/login/setPwd/setPwd",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "设置密码",
@@ -103,6 +160,10 @@
         }
         ,{
             "path" : "pages/admin/inviteFriends/inviteFriends",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "邀请好友",
@@ -112,6 +173,10 @@
         }
         ,{
             "path" : "pages/admin/inviteFriends/myInvite/myInvite",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "我的邀请",
@@ -121,6 +186,10 @@
         }
         ,{
             "path" : "pages/admin/inviteFriends/myTeam/myTeam",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "我的团队",
@@ -130,6 +199,10 @@
         }
         ,{
             "path" : "pages/admin/inviteFriends/InviteRule/InviteRule",
+			"name":"",
+			"meta":{
+				"title":""
+			},
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "分销规则",

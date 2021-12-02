@@ -9,7 +9,15 @@
     "pages/admin/myScore/scoreRecord",
     "pages/admin/myScore/scoreRule",
     "pages/admin/myScore/withdrawal",
-    "pages/admin/myScore/withdrawalRecord"
+    "pages/admin/myScore/withdrawalRecord",
+    "pages/login/login",
+    "pages/login/registerPage/registerPage",
+    "pages/login/forgetPwd/forgetPwd",
+    "pages/login/setPwd/setPwd",
+    "pages/admin/inviteFriends/inviteFriends",
+    "pages/admin/inviteFriends/myInvite/myInvite",
+    "pages/admin/inviteFriends/myTeam/myTeam",
+    "pages/admin/inviteFriends/InviteRule/InviteRule"
   ],
   "subPackages": [],
   "window": {

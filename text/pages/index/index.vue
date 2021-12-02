@@ -5,7 +5,8 @@
 
 <script>
 	import fad from "./fab.vue"
-import toptab from './TopTab.vue';
+	import toptab from './TopTab.vue';
+	import { mapState } from 'vuex'
 
 export default {
 	data() {
@@ -19,8 +20,12 @@ export default {
 		};
 	},
 	onLoad() {
-		console.log(encryptDes)
-	
+		// console.log(encryptDes)
+		if(!this.isLogin){
+			uni.reLaunch({
+				url:'/pages/login/login'
+			})			
+		}
 	},
 	onReachBottom() {
 		console.log('加载');
@@ -54,7 +59,8 @@ export default {
 	},
 	components: {
 		toptab,fad
-	}
+	},
+	computed:mapState(['forcedLogin','isLogin','userName']),//对全局变量进行监控
 };
 </script>
 

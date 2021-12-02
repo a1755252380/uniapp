@@ -1,0 +1,1 @@
+<view class="main"><view class="accountBox"><input class="pwd" type="text" placeholder="请输入新密码"/><input class="pwd" type="text" placeholder="请再次输入新密码"/></view><button class="btn" type="default" data-event-opts="{{[['tap',[['gotoSetup',['$event']]]]]}}" bindtap="__e">确认修改</button></view>

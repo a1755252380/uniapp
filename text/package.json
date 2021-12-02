@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@dcloudio/uni-ui": "^1.4.9",
-    "crypto-js": "^4.1.1"
+    "crypto-js": "^4.1.1",
+    "uni-read-pages": "^1.0.5",
+    "uni-simple-router": "^2.0.7"
   },
   "devDependencies": {
     "sass": "^1.43.4",

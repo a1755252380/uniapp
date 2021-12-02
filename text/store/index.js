@@ -7,7 +7,12 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 	state: {
 		url: "https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi",
-		prictureurl:"https://wemall.minephone.com/openTask/qq_operTask/backend"
+		prictureurl:"https://wemall.minephone.com/openTask/qq_operTask/backend",
+		forcedLogin:true,//是否需要强制登陆
+		isLogin:false,
+		user_id:"",
+		userName:"",
+		token:''
 	},
 	getters:{
 		geturl(state){
@@ -18,7 +23,20 @@ const store = new Vuex.Store({
 		}
 	},
 	mutations: {
-		
+		login(state,user){
+			state.userName = user.username || '';
+			state.isLogin = true;
+			state.user_id = user.id || '';
+			state.token = user.token || '';
+			// state.pointId = user.pointId || '';
+		},
+		 logout(state) {
+			state.userName = "";
+			state.isLogin = false;
+			state.user_id = '';
+			state.token = '';
+			// state.pointId = '';
+		}
 	}
 })
 

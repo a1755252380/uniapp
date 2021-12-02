@@ -1,0 +1,1 @@
+<view class="main"><view class="accountBox"><input class="account" type="text" placeholder="请输入QQ号码作为登陆账号"/><input class="account" type="text" placeholder="请输入手机号码用于找回密码"/></view><button class="btn" type="default" data-event-opts="{{[['tap',[['gotoSetPwd',['$event']]]]]}}" bindtap="__e">下一步</button></view>
