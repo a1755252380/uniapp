@@ -9,6 +9,7 @@
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createApp) {__webpack_require__(/*! uni-pages */ 5);var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 6));
 var _index = _interopRequireDefault(__webpack_require__(/*! store/index.js/ */ 12));
+var _api = __webpack_require__(/*! util/api.js */ 14);
 
 
 
@@ -19,6 +20,19 @@ var app = new _vue.default(_objectSpread(_objectSpread({},
 _App.default), {}, { store: _index.default }));
 
 createApp(app).$mount();
+
+
+
+
+
+
+
+
+
+
+
+
+_vue.default.prototype.$myRequest = _api.myRequest;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createApp"]))
 
 /***/ }),

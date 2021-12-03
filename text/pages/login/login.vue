@@ -5,16 +5,17 @@
 			<input 
 				type="text" 
 				placeholder="请输入账号" 
-				class="account" 
+				class="account"
+				v-model="info.accountName"
 				focus
 			/>
 			<!-- h5和app,写passward时type会失效 -->
-			<input type="text" password placeholder="请输入密码" class="pwd"/>
+			<input type="text" password placeholder="请输入密码" class="pwd" v-model="info.pwd"/>
 		</view>
 		<view class="actionPwd">
 			<view>
 				<label class="radio">
-					<radio value=""  :checked="ischeck" @click="isCheck"/><text>记住密码</text>
+					<radio :checked="ischeck" @click="isCheck"/><text>记住密码</text>
 				</label>
 			</view>
 			<view @click="gotoForget">
@@ -34,11 +35,16 @@
 	export default {
 		data() {
 			return {
-				ischeck:false
+				ischeck:false,
+				info:{
+					accountName:'',
+					pwd:'',
+				}
 			}
 		},
 		methods: {
 			...mapMutations(['login']),
+			//ischeck为真，则把账号密码存入本地
 			isCheck(){
 				this.ischeck = !this.ischeck
 			},
@@ -52,12 +58,31 @@
 					url:'/pages/login/forgetPwd/forgetPwd'
 				})
 			},
-			login(){
-				//接收数据，然后将数据返回给vuex
+			async login(){
+				//先完成登陆请求
+				const res = await this.$myRequest({
+					url:'/login',
+					method:'POST',
+					data:this.info,
+				})
+				console.log(res)
+				// uni.request({
+				// 	url:'https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi/login',
+				// 	method:'POST',
+				// 	data:this.info,
+				// 	success:(res) => {
+				// 		console.log(res)
+				// 	}
+				// })
+				
+				//再接收数据，然后将数据返回给vuex
 				
 			}
 		}
-		,computed:mapState(['forcedLogin','isLogin'])
+		,computed:mapState(['forcedLogin','isLogin']),
+		onLoad() {
+			this.login()
+		}
 	}
 </script>
 

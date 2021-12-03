@@ -24,10 +24,10 @@ export const encryptDes = () => {
     });
 
     var data = {
-        'APP_Key': APP_Key,
-        'APP_scode': encrypted.toString()
+        'App-Key': APP_Key,
+        'App-Scode': encrypted.toString(),
+		'Content-Type':'application/json'
     };
-	console.log(data)
     return data;
 };
 
@@ -58,4 +58,3 @@ function getNowDate() {
     return dateStr;
 }
 
-console.log(encryptDes())

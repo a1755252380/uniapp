@@ -1,5 +1,6 @@
 import App from './App'
 import store from "store/index.js\\"
+import {myRequest} from 'util/api.js'
 
 
 // #ifndef VUE3
@@ -21,3 +22,5 @@ export function createApp() {
   }
 }
 // #endif
+
+Vue.prototype.$myRequest = myRequest
