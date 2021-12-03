@@ -4353,11 +4353,8 @@ var myRequest = function myRequest(options) {
       header: (0, _DES.encryptDes)(),
       success: function success(res) {
         if (res.data.code === 1 || res.data.code === 200) {
-          resolve(res);
-          uni.showToast({
-            title: res.data.msg });
 
-          console.log(res);
+          resolve(res);
         } else {
           uni.showToast({
             title: res.data.msg });

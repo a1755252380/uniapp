@@ -1,8 +1,8 @@
 <template>
 	<view class="main">
 		<view class="accountBox">
-			<input type="text" placeholder="请输入QQ号码作为登陆账号" class="account"/>
-			<input type="text" placeholder="请输入手机号码用于找回密码" class="account"/>
+			<input type="text" placeholder="请输入QQ号码作为登陆账号" class="account" v-model="info.account_num"/>
+			<input type="text" placeholder="请输入手机号码用于找回密码" class="account" v-model="info.phone"/>
 		</view>
 		<button type="default" class="btn" @click="gotoSetPwd">下一步</button>
 	</view>
@@ -12,11 +12,20 @@
 	export default {
 		data() {
 			return {
-				
+				info:{
+					phone:'',
+					account_num:''
+				}
 			}
 		},
 		methods: {
-			gotoSetPwd(){
+			async gotoSetPwd(){
+				// 校对用户和电话号码
+				const res = await this.$myRequest({
+					url:'/forgotPasswordAjax',
+					data:this.info
+				})
+				// console.log(res)
 				uni.navigateTo({
 					url:'/pages/login/setPwd/setPwd'
 				})

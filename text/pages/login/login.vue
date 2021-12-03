@@ -67,9 +67,15 @@
 				})
 				//接受到user_id后，然后将id返回给vuex
 				this.$store.commit('setUpUserId',res.data.data.user_id)
-				uni.switchTab({
-					url:'/pages/index/index'
+				uni.showToast({
+					title:res.data.msg
 				})
+				setTimeout(()=>{
+					uni.switchTab({
+						url:'/pages/index/index'
+					})
+				},1500)
+				
 			}
 		}
 		,computed:mapState(['forcedLogin','isLogin']),

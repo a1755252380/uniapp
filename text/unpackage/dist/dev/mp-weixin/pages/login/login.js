@@ -199,8 +199,14 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
 
                 //接受到user_id后，然后将id返回给vuex
                 _this.$store.commit('setUpUserId', res.data.data.user_id);
-                uni.switchTab({
-                  url: '/pages/index/index' });case 5:case "end":return _context.stop();}}}, _callee);}))();
+                uni.showToast({
+                  title: res.data.msg });
+
+                setTimeout(function () {
+                  uni.switchTab({
+                    url: '/pages/index/index' });
+
+                }, 1500);case 6:case "end":return _context.stop();}}}, _callee);}))();
 
     } }),
 
