@@ -169,8 +169,8 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
     return {
       ischeck: false,
       info: {
-        accountName: '',
-        pwd: '' } };
+        account_num: '',
+        password: '' } };
 
 
   },
@@ -197,23 +197,15 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
                     method: 'POST',
                     data: _this.info }));case 2:res = _context.sent;
 
-                console.log(res);
-                // uni.request({
-                // 	url:'https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi/login',
-                // 	method:'POST',
-                // 	data:this.info,
-                // 	success:(res) => {
-                // 		console.log(res)
-                // 	}
-                // })
+                //接受到user_id后，然后将id返回给vuex
+                _this.$store.commit('setUpUserId', res.data.data.user_id);
+                uni.switchTab({
+                  url: '/pages/index/index' });case 5:case "end":return _context.stop();}}}, _callee);}))();
 
-                //再接收数据，然后将数据返回给vuex
-              case 4:case "end":return _context.stop();}}}, _callee);}))();
     } }),
 
   computed: (0, _vuex.mapState)(['forcedLogin', 'isLogin']),
   onLoad: function onLoad() {
-    this.login();
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

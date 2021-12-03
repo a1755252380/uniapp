@@ -12,7 +12,7 @@
 			</view>
 		</view>
 		<view class="centerBox">
-			<button type="default" class="btn">兑换提现</button>		
+			<button  class="btn">兑换提现</button>		
 		</view>
 	</view>
 </template>

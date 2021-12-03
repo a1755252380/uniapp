@@ -152,7 +152,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);var fad = function fad() {__webp
 
   },
   onLoad: function onLoad() {
-    // console.log(encryptDes)
+    //判断登陆状态
     if (!this.isLogin) {
       uni.reLaunch({
         url: '/pages/login/login' });
@@ -192,7 +192,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);var fad = function fad() {__webp
   components: {
     toptab: toptab, fad: fad },
 
-  computed: (0, _vuex.mapState)(['forcedLogin', 'isLogin', 'userName']) //对全局变量进行监控
+  computed: (0, _vuex.mapState)(['forcedLogin', 'isLogin']) //对全局变量进行监控
 };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

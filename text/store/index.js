@@ -6,36 +6,30 @@ Vue.use(Vuex)
 //实例store对象
 const store = new Vuex.Store({
 	state: {
-		url: "https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi",
-		prictureurl:"https://wemall.minephone.com/openTask/qq_operTask/backend",
 		forcedLogin:true,//是否需要强制登陆
 		isLogin:false,
-		user_id:"",
-		userName:"",
-		token:''
-	},
-	getters:{
-		geturl(state){
-			return state.url
-		},
-		getprictureurl(state){
-			return state.prictureurl
+		userInfo:{
+			user_id:"",
+			name:"",//姓名
+			account_num:'',//账号
+			phone:'',//手机号
+			password:'',//密码
+			invite_code:'',//邀请码
 		}
 	},
+	getters:{
+	},
+	//响应动作
+	actions:{
+		
+	},
+	
+	//操作数据
 	mutations: {
-		login(state,user){
-			state.userName = user.username || '';
-			state.isLogin = true;
-			state.user_id = user.id || '';
-			state.token = user.token || '';
-			// state.pointId = user.pointId || '';
-		},
-		 logout(state) {
-			state.userName = "";
-			state.isLogin = false;
-			state.user_id = '';
-			state.token = '';
-			// state.pointId = '';
+		// 登入并设置用户id
+		setUpUserId(state,use_id){
+			state.userInfo.user_id = use_id || '';
+			state.isLogin = !state.isLogin
 		}
 	}
 })

@@ -20,11 +20,11 @@ export default {
 		};
 	},
 	onLoad() {
-		// console.log(encryptDes)
+		//判断登陆状态
 		if(!this.isLogin){
 			uni.reLaunch({
 				url:'/pages/login/login'
-			})			
+			})
 		}
 	},
 	onReachBottom() {
@@ -60,7 +60,7 @@ export default {
 	components: {
 		toptab,fad
 	},
-	computed:mapState(['forcedLogin','isLogin','userName']),//对全局变量进行监控
+	computed:mapState(['forcedLogin','isLogin']),//对全局变量进行监控
 };
 </script>
 

@@ -130,22 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-var _api = __webpack_require__(/*! ../../../static/js/api.js */ 135); //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 132));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
 //
 //
 //
@@ -159,10 +144,52 @@ var _api = __webpack_require__(/*! ../../../static/js/api.js */ 135); //
 //
 //
 //
-var _default = { data: function data() {return {};}, methods: { registered: function registered() {// uni.showToast({
-      // 	title:'注册成功'
-      // })
-      (0, _api.Register)('xxx', 'aa123456', '12345678', '123456');} } };exports.default = _default;
+//
+var _default =
+{
+  data: function data() {
+    return {
+      //注册的用户信息
+      info: {
+        name: '',
+        account_num: "",
+        phone: "",
+        password: "",
+        invite_code: "" },
+
+      pwd: "" };
+
+  },
+  methods: {
+    //两次不一致密码没改就不让注册
+    registered: function registered(check) {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.$myRequest({
+                    url: '/registers',
+                    data: _this.info }));case 2:res = _context.sent;
+
+                if (res.data.code === 1) {
+                  uni.showToast({
+                    title: '注册成功' });
+
+                  uni.redirectTo({
+                    url: '/pages/login/login' });
+
+                }case 4:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    //校对两次密码
+    proofread: function proofread() {
+      if (this.info.password) {
+        if (this.info.password !== this.pwd) {
+          uni.showToast({
+            title: '两次密码不一致' });
+
+          this.registered(1);
+        }
+      }
+    } },
+
+  computed: {} };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

@@ -10,8 +10,24 @@ const myRequest = (options) =>{
 			data:options.data || {},
 			header:encryptDes(),
 			success: res => {
-				console.log(res),
-				console.log(encryptDes())
+				if(res.data.code === 1 || res.data.code === 200){
+					resolve(res)
+					uni.showToast({
+						title:res.data.msg
+					})
+					console.log(res)
+				}else{
+					uni.showToast({
+						title:res.data.msg
+					})
+					
+				}
+			},
+			fail: (err) => {
+				uni.showToast({
+					title:'接口请求失败'
+				})
+				reject(err)
 			}
 		})
 	})

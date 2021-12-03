@@ -2195,36 +2195,30 @@ _vue.default.use(_vuex.default);
 //实例store对象
 var store = new _vuex.default.Store({
   state: {
-    url: "https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi",
-    prictureurl: "https://wemall.minephone.com/openTask/qq_operTask/backend",
     forcedLogin: true, //是否需要强制登陆
     isLogin: false,
-    user_id: "",
-    userName: "",
-    token: '' },
-
-  getters: {
-    geturl: function geturl(state) {
-      return state.url;
-    },
-    getprictureurl: function getprictureurl(state) {
-      return state.prictureurl;
+    userInfo: {
+      user_id: "",
+      name: "", //姓名
+      account_num: '', //账号
+      phone: '', //手机号
+      password: '', //密码
+      invite_code: '' //邀请码
     } },
 
+  getters: {},
+
+  //响应动作
+  actions: {},
+
+
+
+  //操作数据
   mutations: {
-    login: function login(state, user) {
-      state.userName = user.username || '';
-      state.isLogin = true;
-      state.user_id = user.id || '';
-      state.token = user.token || '';
-      // state.pointId = user.pointId || '';
-    },
-    logout: function logout(state) {
-      state.userName = "";
-      state.isLogin = false;
-      state.user_id = '';
-      state.token = '';
-      // state.pointId = '';
+    // 登入并设置用户id
+    setUpUserId: function setUpUserId(state, use_id) {
+      state.userInfo.user_id = use_id || '';
+      state.isLogin = !state.isLogin;
     } } });
 
 
@@ -4358,8 +4352,24 @@ var myRequest = function myRequest(options) {
       data: options.data || {},
       header: (0, _DES.encryptDes)(),
       success: function success(res) {
-        console.log(res),
-        console.log((0, _DES.encryptDes)());
+        if (res.data.code === 1 || res.data.code === 200) {
+          resolve(res);
+          uni.showToast({
+            title: res.data.msg });
+
+          console.log(res);
+        } else {
+          uni.showToast({
+            title: res.data.msg });
+
+
+        }
+      },
+      fail: function fail(err) {
+        uni.showToast({
+          title: '接口请求失败' });
+
+        reject(err);
       } });
 
   });
