@@ -26,6 +26,12 @@ export default {
 				url:'/pages/login/login'
 			})
 		}
+		console.log(uni.getStorage({
+			key:'account_num',
+			success:(res)=>{
+				console.log(res)
+			}
+		}))
 	},
 	onReachBottom() {
 		console.log('加载');

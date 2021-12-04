@@ -25,11 +25,13 @@
 					url:'/forgotPasswordAjax',
 					data:this.info
 				})
+				this.$store.commit('resetPwd',this.info)
 				// console.log(res)
 				uni.navigateTo({
 					url:'/pages/login/setPwd/setPwd'
 				})
 			}
+			
 		}
 	}
 </script>

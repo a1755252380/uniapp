@@ -30,7 +30,6 @@
 </template>
 
 <script>
-	import {login} from '../../static/js/api.js'
 	import { mapState , mapMutations } from 'vuex'
 	export default {
 		data() {
@@ -44,9 +43,22 @@
 		},
 		methods: {
 			...mapMutations(['login']),
-			//ischeck为真，则把账号密码存入本地
+			// 控制勾不勾
 			isCheck(){
-				this.ischeck = !this.ischeck
+				this.ischeck = !this.ischeck		
+			},
+			// 缓存到本地
+			setStorage1(){
+				if(this.ischeck){
+					uni.setStorage({
+						key:'userInfo',
+						data:this.info
+					})
+					uni.setStorage({
+						key:'ischeck',
+						data:this.ischeck
+					})
+				}
 			},
 			gotoRegister(){
 				uni.navigateTo({
@@ -59,6 +71,7 @@
 				})
 			},
 			async login(){
+				this.setStorage1()
 				//先完成登陆请求
 				const res = await this.$myRequest({
 					url:'/login',
@@ -80,6 +93,19 @@
 		}
 		,computed:mapState(['forcedLogin','isLogin']),
 		onLoad() {
+			//判断本地有无用户缓存
+			uni.getStorage({
+				key:'userInfo',
+				success: (res) => {
+					this.info = res.data
+				}
+			})
+			uni.getStorage({
+				key:'ischeck',
+				success: (res) => {
+					this.ischeck = res.data
+				}
+			})
 		}
 	}
 </script>

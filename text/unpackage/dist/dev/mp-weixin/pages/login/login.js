@@ -162,7 +162,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _api = __webpack_require__(/*! ../../static/js/api.js */ 135);
 var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var _default =
 {
   data: function data() {
@@ -176,9 +175,22 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
   },
   methods: _objectSpread(_objectSpread({},
   (0, _vuex.mapMutations)(['login'])), {}, {
-    //ischeck为真，则把账号密码存入本地
+    // 控制勾不勾
     isCheck: function isCheck() {
       this.ischeck = !this.ischeck;
+    },
+    // 缓存到本地
+    setStorage1: function setStorage1() {
+      if (this.ischeck) {
+        uni.setStorage({
+          key: 'userInfo',
+          data: this.info });
+
+        uni.setStorage({
+          key: 'ischeck',
+          data: this.ischeck });
+
+      }
     },
     gotoRegister: function gotoRegister() {
       uni.navigateTo({
@@ -190,12 +202,13 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
         url: '/pages/login/forgetPwd/forgetPwd' });
 
     },
-    login: function login() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
-
-                  _this.$myRequest({
-                    url: '/login',
-                    method: 'POST',
-                    data: _this.info }));case 2:res = _context.sent;
+    login: function login() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:
+                _this.setStorage1();
+                //先完成登陆请求
+                _context.next = 3;return _this.$myRequest({
+                  url: '/login',
+                  method: 'POST',
+                  data: _this.info });case 3:res = _context.sent;
 
                 //接受到user_id后，然后将id返回给vuex
                 _this.$store.commit('setUpUserId', res.data.data.user_id);
@@ -206,12 +219,25 @@ var _vuex = __webpack_require__(/*! vuex */ 13);function _interopRequireDefault(
                   uni.switchTab({
                     url: '/pages/index/index' });
 
-                }, 1500);case 6:case "end":return _context.stop();}}}, _callee);}))();
+                }, 1500);case 7:case "end":return _context.stop();}}}, _callee);}))();
 
     } }),
 
   computed: (0, _vuex.mapState)(['forcedLogin', 'isLogin']),
-  onLoad: function onLoad() {
+  onLoad: function onLoad() {var _this2 = this;
+    //判断本地有无用户缓存
+    uni.getStorage({
+      key: 'userInfo',
+      success: function success(res) {
+        _this2.info = res.data;
+      } });
+
+    uni.getStorage({
+      key: 'ischeck',
+      success: function success(res) {
+        _this2.ischeck = res.data;
+      } });
+
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

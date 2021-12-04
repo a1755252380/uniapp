@@ -1,10 +1,10 @@
 <template>
 	<view class="main">
 		<view class="accountBox">
-			<input type="text" placeholder="请输入新密码" class="pwd"/>
-			<input type="text" placeholder="请再次输入新密码" class="pwd"/>
+			<input type="text" placeholder="请输入新密码" class="pwd" v-model="info.password"/>
+			<input type="text" placeholder="请再次输入新密码" class="pwd" v-model="pwd" @blur="proofreadPwd"/>
 		</view>
-		<button type="default" class="btn" @click="gotoSetup">确认修改</button>
+		<button type="default" class="btn" @click="Setup">确认修改</button>
 	</view>
 </template>
 
@@ -12,16 +12,50 @@
 	export default {
 		data() {
 			return {
-				
+				info:{
+					password:'',
+					account_num:this.$store.state.userInfo.account_num
+				},
+				pwd:'',
+				check:false
 			}
 		},
 		methods: {
-			gotoSetup(){
+			Setup(){
+				this.proofreadPwd()
+				if(this.check){
+					this.gotoSetup()
+				}
+			},
+			async gotoSetup(){
+				const res = await this.$myRequest({
+					url:'/resetPasswordAjax',
+					data:this.info
+				})
 				uni.showToast({
 					title:'修改成功'
-				})
+				}),
+				setTimeout(()=>{
+					uni.navigateTo({
+						url:'/pages/login/login'
+					})
+					
+				},1500)
+			},
+			//校验问题
+			proofreadPwd(){
+				if(this.info.password && this.pwd){
+					this.info.password === this.pwd ? this.check=true:uni.showToast({
+						title:'两次密码不一致'
+					})
+				}else{
+					uni.showToast({
+						title:'不能有空项'
+					})
+					console.log(this.info.password,this.pwd)
+				}
 			}
-		}
+		},
 	}
 </script>
 

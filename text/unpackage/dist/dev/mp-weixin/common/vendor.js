@@ -2219,6 +2219,11 @@ var store = new _vuex.default.Store({
     setUpUserId: function setUpUserId(state, use_id) {
       state.userInfo.user_id = use_id || '';
       state.isLogin = !state.isLogin;
+    },
+    // 重置密码
+    resetPwd: function resetPwd(state, _ref) {var phone = _ref.phone,account_num = _ref.account_num;
+      state.userInfo.account_num = account_num;
+      state.userInfo.phone = phone;
     } } });
 
 
@@ -4276,59 +4281,6 @@ if (hadRuntime) {
   })() || Function("return this")()
 );
 
-
-/***/ }),
-
-/***/ 135:
-/*!***************************************************************************!*\
-  !*** D:/web/forWork/code/local_repositories/uniapp/text/static/js/api.js ***!
-  \***************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.Register = exports.login = void 0;var _DES = __webpack_require__(/*! ./DES.js */ 15);
-
-
-
-//登录
-var login = function login(Account, password) {
-  uni.request({
-    url: "/Ajaxapi/login", //仅为示例，并非真实接口地址。
-    method: "POST",
-    data: {
-      "account_num": Account,
-      "password": password },
-
-    headers: _DES.encryptDes,
-    success: function success(res) {
-      console.log(res.data);
-
-    } });
-
-};
-
-
-//注册
-exports.login = login;var Register = function Register(name, Account, phone, password, invite) {
-  uni.request({
-    url: "/Ajaxapi/registers", //仅为示例，并非真实接口地址。
-    method: "POST",
-    data: {
-      "name": name,
-      "account_num": Account,
-      "phone": phone,
-      "password": password,
-      "invite_code": invite || '' },
-
-    headers: _DES.encryptDes,
-    success: function success(res) {
-      console.log(res.data);
-
-    } });
-
-};exports.Register = Register;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
 

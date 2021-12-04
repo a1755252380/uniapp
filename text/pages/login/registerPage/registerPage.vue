@@ -25,12 +25,38 @@
 					password:"",
 					invite_code:"",
 				},
-				pwd:""
+				pwd:"",
+				check:false, // 密码校验
 			}
 		},
 		methods: {
+			// 判断页面内容是否缺少必要内容
+			registered(){
+				let arr = [] 
+				//校验
+				this.proofread()
+				console.log('2',this.check)
+				if(this.check){
+					for(const [key,value] of Object.entries(this.info)){
+						if(key == 'invite_code'){
+							continue
+						}else{
+							if(value == ''){
+								arr.push(value)
+							}
+						}
+					}
+					arr.length == 0 ? this.getRegistered():uni.showToast({
+						title:'还有空白没填'
+					})
+				}
+				
+			},
+			
+			
+			
 			//两次不一致密码没改就不让注册
-			async registered(check){
+			async getRegistered(){
 				const res = await this.$myRequest({
 					url:'/registers',
 					data:this.info,
@@ -44,21 +70,21 @@
 					})
 				}
 			},
-			//校对两次密码
+			// 校验两次密码是否相同
 			proofread(){
-				if(this.info.password){
-					if(this.info.password !== this.pwd){
-						uni.showToast({
-							title:'两次密码不一致'
-						})
-						this.registered(1)
-					}					
+				if(this.info.password && this.pwd){
+					this.info.password === this.pwd ? this.check = true : uni.showToast({
+							title:'密码不一致'
+					})
+					
+				}else{
+					uni.showToast({
+						title:'密码不能为空'
+					})
 				}
 			}
-		},
-		computed:{
 			
-		}
+		},
 	}
 </script>
 

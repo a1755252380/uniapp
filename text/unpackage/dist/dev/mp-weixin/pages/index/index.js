@@ -158,6 +158,12 @@ var _vuex = __webpack_require__(/*! vuex */ 13);var fad = function fad() {__webp
         url: '/pages/login/login' });
 
     }
+    console.log(uni.getStorage({
+      key: 'account_num',
+      success: function success(res) {
+        console.log(res);
+      } }));
+
   },
   onReachBottom: function onReachBottom() {var _this = this;
     console.log('加载');

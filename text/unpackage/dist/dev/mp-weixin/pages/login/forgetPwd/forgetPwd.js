@@ -157,9 +157,10 @@ var _default =
                     url: '/forgotPasswordAjax',
                     data: _this.info }));case 2:res = _context.sent;
 
+                _this.$store.commit('resetPwd', _this.info);
                 // console.log(res)
                 uni.navigateTo({
-                  url: '/pages/login/setPwd/setPwd' });case 4:case "end":return _context.stop();}}}, _callee);}))();
+                  url: '/pages/login/setPwd/setPwd' });case 5:case "end":return _context.stop();}}}, _callee);}))();
 
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

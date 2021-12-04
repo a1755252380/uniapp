@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 132));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
 //
 //
 //
@@ -143,15 +143,49 @@ __webpack_require__.r(__webpack_exports__);
 var _default =
 {
   data: function data() {
-    return {};
+    return {
+      info: {
+        password: '',
+        account_num: this.$store.state.userInfo.account_num },
 
+      pwd: '',
+      check: false };
 
   },
   methods: {
-    gotoSetup: function gotoSetup() {
-      uni.showToast({
-        title: '修改成功' });
+    Setup: function Setup() {
+      this.proofreadPwd();
+      if (this.check) {
+        this.gotoSetup();
+      }
+    },
+    gotoSetup: function gotoSetup() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.$myRequest({
+                    url: '/resetPasswordAjax',
+                    data: _this.info }));case 2:res = _context.sent;
 
+                uni.showToast({
+                  title: '修改成功' }),
+
+                setTimeout(function () {
+                  uni.navigateTo({
+                    url: '/pages/login/login' });
+
+
+                }, 1500);case 4:case "end":return _context.stop();}}}, _callee);}))();
+    },
+    //校验问题
+    proofreadPwd: function proofreadPwd() {
+      if (this.info.password && this.pwd) {
+        this.info.password === this.pwd ? this.check = true : uni.showToast({
+          title: '两次密码不一致' });
+
+      } else {
+        uni.showToast({
+          title: '不能有空项' });
+
+        console.log(this.info.password, this.pwd);
+      }
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

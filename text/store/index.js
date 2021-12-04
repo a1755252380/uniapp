@@ -30,6 +30,11 @@ const store = new Vuex.Store({
 		setUpUserId(state,use_id){
 			state.userInfo.user_id = use_id || '';
 			state.isLogin = !state.isLogin
+		},
+		// 重置密码
+		resetPwd(state,{phone,account_num}){
+			state.userInfo.account_num = account_num
+			state.userInfo.phone = phone
 		}
 	}
 })
