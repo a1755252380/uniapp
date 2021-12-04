@@ -73,7 +73,7 @@
 			async login(){
 				this.setStorage1()
 				//先完成登陆请求
-				const res = await this.$myRequest({
+			await this.$myRequest({
 					url:'/login',
 					method:'POST',
 					data:this.info,

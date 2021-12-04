@@ -23,4 +23,5 @@ export function createApp() {
 }
 // #endif
 
+
 Vue.prototype.$myRequest = myRequest
