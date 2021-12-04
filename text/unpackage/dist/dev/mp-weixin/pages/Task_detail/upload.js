@@ -96,7 +96,7 @@ var components
 try {
   components = {
     uniFilePicker: function() {
-      return Promise.all(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker")]).then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue */ 243))
+      return Promise.all(/*! import() | node-modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker */[__webpack_require__.e("common/vendor"), __webpack_require__.e("node-modules/@dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker")]).then(__webpack_require__.bind(null, /*! @dcloudio/uni-ui/lib/uni-file-picker/uni-file-picker.vue */ 242))
     }
   }
 } catch (e) {

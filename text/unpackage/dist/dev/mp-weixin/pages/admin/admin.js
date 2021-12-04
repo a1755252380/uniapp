@@ -130,7 +130,11 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 132));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
+//
+//
+//
+//
 //
 //
 //
@@ -154,6 +158,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 var _default =
 {
+  data: function data() {
+    return {
+      userInfo: {} };
+
+  },
   methods: {
     gotoMyScore: function gotoMyScore() {
       uni.navigateTo({
@@ -169,7 +178,27 @@ var _default =
       uni.navigateTo({
         url: '/pages/admin/inviteFriends/inviteFriends' });
 
-    } } };exports.default = _default;
+    },
+    getUserInfo: function getUserInfo() {var _this = this;return _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:_context.next = 2;return (
+                  _this.$myRequest({
+                    url: '/personCenter',
+                    data: { user_id: "".concat(_this.$store.state.userInfo.user_id) } }));case 2:res = _context.sent;
+
+                _this.userInfo = res.data.data;case 4:case "end":return _context.stop();}}}, _callee);}))();
+    } },
+
+  onLoad: function onLoad() {
+    //切换到个人中心就获取数据
+    this.getUserInfo();
+    console.log('onload');
+  },
+  //小程序不支持activated
+  // activated() {
+  // 	console.log('activated_admin')
+  // },
+  updated: function updated() {
+    console.log('updated_admin');
+  } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

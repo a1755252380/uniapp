@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var seach = function seach() {__webpack_require__.e(/*! require.ensure | pages/compoent/seach */ "pages/compoent/seach").then((function () {return resolve(__webpack_require__(/*! ../../compoent/seach.vue */ 254));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var fab = function fab() {__webpack_require__.e(/*! require.ensure | pages/index/fab */ "pages/index/fab").then((function () {return resolve(__webpack_require__(/*! ../../index/fab.vue */ 188));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var seach = function seach() {__webpack_require__.e(/*! require.ensure | pages/compoent/seach */ "pages/compoent/seach").then((function () {return resolve(__webpack_require__(/*! ../../compoent/seach.vue */ 253));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var fab = function fab() {__webpack_require__.e(/*! require.ensure | pages/index/fab */ "pages/index/fab").then((function () {return resolve(__webpack_require__(/*! ../../index/fab.vue */ 187));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 

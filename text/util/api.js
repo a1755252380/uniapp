@@ -13,6 +13,7 @@ const myRequest = (options) =>{
 				if(res.data.code === 1 || res.data.code === 200){
 					
 					resolve(res)
+					
 				}else{
 					uni.showToast({
 						title:res.data.msg
