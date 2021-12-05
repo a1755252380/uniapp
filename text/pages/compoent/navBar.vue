@@ -24,6 +24,7 @@
 
 <script>
 	export default{
+		props:["data1"],
 		data(){
 			return{
 				items:['本周','本月','本年'],
@@ -34,6 +35,7 @@
 		methods:{
 			pageIndex(i){
 				this.current = i
+				
 			}
 		}
 	}

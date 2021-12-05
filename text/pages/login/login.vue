@@ -12,7 +12,7 @@
 			<!-- h5和app,写passward时type会失效 -->
 			<input type="text" password placeholder="请输入密码" class="pwd" v-model="info.password"/>
 		</view>
-		<view class="actionPwd">
+		<view class="actionPwd" >
 			<view @click="isCheck">
 				<label class="radio">
 					<radio :checked="ischeck" /><text>记住密码</text>
@@ -66,6 +66,7 @@
 					key:'userInfo',
 					success: (res) => {
 						this.info = res.data
+						this.login()
 					}
 				})
 				uni.getStorage({
@@ -113,9 +114,9 @@
 		onLoad() {
 			this.isStorageHave()
 		},
-		updated() {
-			this.isStorageHave()
-		}
+		// updated() {
+		// 	this.isStorageHave()
+		// }
 	}
 </script>
 

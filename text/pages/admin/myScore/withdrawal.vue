@@ -1,18 +1,18 @@
 <template>
 	<view>
 		<view class="top">
-			积分兑换：10积分=1元，30积分起兑。
+			积分兑换：{{applyRule.proportion}}积分=1元，{{applyRule.quota}}积分起兑。
 		</view>
 		<view class="content">
 			<view class="item" v-for="(i,index) in items" :key="index" @click="getMoney(i)">
 				{{i}}元
 			</view>
 			<view class="item">
-				<input type="number" placeholder="自定义金额" class="diy" v-model="diyMoney" maxlength="3"/>元
+				<input type="number" placeholder="自定义金额" class="diy" v-model="userInfo.money" maxlength="3"/>元
 			</view>
 		</view>
 		<view class="centerBox">
-			<button  class="btn">兑换提现</button>		
+			<button  class="btn" @click="Withdrawal">兑换提现</button>		
 		</view>
 	</view>
 </template>
@@ -22,14 +22,40 @@
 		data(){
 			return{
 				items:['10','20','30','50','100'],
-				diyMoney:''
+				userInfo:{
+					user_id:this.$store.state.userInfo.user_id,
+					money:'',
+					score:0
+				},
+				applyRule:{},
 			}
 		},
 		methods:{
 			getMoney(money){
-				this.diyMoney = money
-			}
-		}
+				this.userInfo.money = money
+			},
+			async getApplyRule(){
+				const res = await this.$myRequest({
+					url:'/applyRule'
+				})
+				this.applyRule = res.data.data
+			},
+			async getWithdrawal(){
+				this.userInfo.score = this.userInfo.money * this.applyRule.proportion
+				const res = await this.$myRequest({
+					url:'/applyMoney',
+					data:this.userInfo
+				})
+			},
+			Withdrawal(){
+				this.getWithdrawal()
+				// console.log(this.userInfo)
+			},
+		},
+		onLoad() {
+			this.getApplyRule()
+		},
+		
 	}
 </script>
 

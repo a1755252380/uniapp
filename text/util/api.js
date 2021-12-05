@@ -11,9 +11,8 @@ const myRequest = (options) =>{
 			header:encryptDes(),
 			success: res => {
 				if(res.data.code === 1 || res.data.code === 200){
-					
+					// console.log('success')
 					resolve(res)
-					
 				}else{
 					console.log(res)
 					console.log("请求错误")
