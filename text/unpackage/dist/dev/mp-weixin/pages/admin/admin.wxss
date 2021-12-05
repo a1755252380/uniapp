@@ -30,16 +30,27 @@
   border-bottom: 30rpx solid #f2f2f2;
   display: flex;
   padding: 60rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.top .img {
-  width: 140rpx;
-  height: 140rpx;
-  border: 1px solid #f2f2f2;
-  border-radius: 60rpx;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADtElEQVRYR8WXXWhcRRTH/2duNhhsBUVXG5VK+2AhaFIQq+1y754hgQYUEcraSkEfFKxFEKpvCuKTD+qDilA/QINfVfRFLa2amXtxExdpsFZWoRT8AoW1otKSNLubOTJlC5v0JtmbZsnAfbjsmfv/nY85Z5awxovWWB8rBjDGbCOiUQC/5HK5LwqFwh8rcSYzQLVa7a3Vaq8BeEBEagD+ArCFiN7K5/OPDgwM1LOAZAaw1n4oIvcopR6p1WpjpVJpzhhzM4CjRPQlMz/cNYA4jkdF5DCAPcz8QbtQkiRbnXNTSqnBKIp+6BQiUwSMMW8DGNJaD6YJGGOOAjiltd7fLYDjRPQVMz+RJmCtfU5Edmqth7oF8KtS6vlisfhymkAcx4855w5orW/qFsBxAONa6wOLpOBFANu11nd0BcBa+wqAkJlvXSQFJwAYZn68KwBJktzinPMiu5n5ULuItfY+EXkvCIKhrp0CL2iMOd+EAOxzzn3e19cn9Xr9bhF5FcCTWuuXOvXe22U6hn5DqxMeBPBgm9BpEfHFN5ZFfEUAFwSSJLnRObfZv+dyualCoXAmq/glAaxELG1PRymoVCpXzMzM3Csig0TUD8A/14lIPxFd3vpwU0R+BDBFRAmAj5n57HKgSwL4qp+bm3uGiHyRTRPR1wAqInKMiGbPh5BovQfxD4AbAPgmtKNVX5/19PQ8HYahB0tdqQDe4+np6dcB7CKi95VSL4Rh6NuwLOeR/71cLq+v1+t7iGifnx0A3m02m/tHRkb+W7j/IgBjzIAfrQDOEtFeZj7WiehiNtbaoogc8hETkVGtdbXddh6AtfZqAN/5PObz+VLWy8ViEOVyub/RaBwBcCWArcx8+oLtQgA/4/3l4k5mPncpni/c20rLNwBOaK3vvwhgfHx8s1LqlIgUtda+ild9WWt3AfhIKbUpiqKf5/UBY0wJwJjW+rJVV259UERUHMfnRGS31vqTeQDW2ocAPMvM/jh1bVlr/wTwFDO/uTAC/ppdaQ/PalNYa7cA+CkIgm1hGH47D8C/WGuPiMg6IrqLmf9dTYAkSbY75/wIrzLzztRT0KrUd4jodgBvENHhZrN5cnh4+O8sMJOTk1fNzs5uEpGN/lS1/sDsEJFPe3t797YPrtRO2KL1Xew231pFpE5Ev4lIGsg6ABsAXEtEQQroP144CIKDURRNLtsJ0zydmJjINxqNjc65DUqp651z1xCRWiIqZ0TkdyI6WSwWv1+qhXc0DbOEP6vtmgP8D/USlDCzV6ZqAAAAAElFTkSuQmCC) no-repeat center center;
-  background-color: #f2f2f2;
-  background-size: cover;
-  margin: 5px 10px 5px 0;
+.top .left .text1 {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 30rpx;
+}
+.top .left .text2 {
+  display: block;
+  font-size: 14px;
+}
+.top .right .img {
+  width: 60rpx;
+  height: 60rpx;
+}
+.top .right .text {
+  font-size: 14px;
+  color: #5eae3d;
 }
 .content {
   width: 100%;

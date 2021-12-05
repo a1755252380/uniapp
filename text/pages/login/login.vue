@@ -47,7 +47,7 @@
 			isCheck(){
 				this.ischeck = !this.ischeck		
 			},
-			// 缓存到本地
+			// 缓存到本地及提交给vuex
 			setStorage1(){
 				if(this.ischeck){
 					uni.setStorage({
@@ -59,6 +59,21 @@
 						data:this.ischeck
 					})
 				}
+			},
+			isStorageHave(){
+				//判断本地有无用户缓存
+				uni.getStorage({
+					key:'userInfo',
+					success: (res) => {
+						this.info = res.data
+					}
+				})
+				uni.getStorage({
+					key:'ischeck',
+					success: (res) => {
+						this.ischeck = res.data
+					}
+				})
 			},
 			gotoRegister(){
 				uni.navigateTo({
@@ -87,25 +102,16 @@
 					uni.switchTab({
 						url:'/pages/index/index'
 					})
-				},1500)
+				},1200)
 				
 			}
 		}
 		,computed:mapState(['forcedLogin','isLogin']),
 		onLoad() {
-			//判断本地有无用户缓存
-			uni.getStorage({
-				key:'userInfo',
-				success: (res) => {
-					this.info = res.data
-				}
-			})
-			uni.getStorage({
-				key:'ischeck',
-				success: (res) => {
-					this.ischeck = res.data
-				}
-			})
+			this.isStorageHave()
+		},
+		updated() {
+			this.isStorageHave()
 		}
 	}
 </script>

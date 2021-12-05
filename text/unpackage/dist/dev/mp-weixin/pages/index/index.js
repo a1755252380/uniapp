@@ -138,7 +138,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ 13);var fad = function fad() {__webpack_require__.e(/*! require.ensure | pages/index/fab */ "pages/index/fab").then((function () {return resolve(__webpack_require__(/*! ./fab.vue */ 188));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var toptab = function toptab() {__webpack_require__.e(/*! require.ensure | pages/index/TopTab */ "pages/index/TopTab").then((function () {return resolve(__webpack_require__(/*! ./TopTab.vue */ 195));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 13);var fad = function fad() {__webpack_require__.e(/*! require.ensure | pages/index/fab */ "pages/index/fab").then((function () {return resolve(__webpack_require__(/*! ./fab.vue */ 187));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var toptab = function toptab() {__webpack_require__.e(/*! require.ensure | pages/index/TopTab */ "pages/index/TopTab").then((function () {return resolve(__webpack_require__(/*! ./TopTab.vue */ 194));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 {
   data: function data() {
@@ -158,12 +158,7 @@ var _vuex = __webpack_require__(/*! vuex */ 13);var fad = function fad() {__webp
         url: '/pages/login/login' });
 
     }
-    console.log(uni.getStorage({
-      key: 'account_num',
-      success: function success(res) {
-        console.log(res);
-      } }));
-
+    //一登陆成功就请求用户的相关数据
   },
   onReachBottom: function onReachBottom() {var _this = this;
     console.log('加载');

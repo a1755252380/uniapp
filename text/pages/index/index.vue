@@ -26,12 +26,7 @@ export default {
 				url:'/pages/login/login'
 			})
 		}
-		console.log(uni.getStorage({
-			key:'account_num',
-			success:(res)=>{
-				console.log(res)
-			}
-		}))
+		//一登陆成功就请求用户的相关数据
 	},
 	onReachBottom() {
 		console.log('加载');
@@ -61,7 +56,7 @@ export default {
 		Receivetype(type) {
 			this.type = type;
 			this.more = 'more';
-		}
+		},
 	},
 	components: {
 		toptab,fad

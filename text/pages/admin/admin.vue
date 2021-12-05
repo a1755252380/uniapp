@@ -1,9 +1,13 @@
 <template>
 	<view>
 		<view class="top">
-			<view class="img"></view>
-			<view class="text">
-				帅帅
+			<view class="left">
+				<view class="text1">{{userInfo.name}}</view>
+				<view class="text2">{{userInfo.account_num}}</view>
+			</view>
+			<view class="right">
+				<image src="../../static/img/icon/invite.svg" mode="" class="img"></image>
+				<view class="text">邀请绑定</view>
 			</view>
 		</view>
 		<view class="content">
@@ -22,10 +26,15 @@
 
 <script>
 	export default{
+		data(){
+			return{
+				userInfo:{},
+			}
+		},
 		methods:{
 			gotoMyScore(){
 				uni.navigateTo({
-					url:"/pages/admin/myScore/myScore"
+					url:`/pages/admin/myScore/myScore`
 				})
 			},
 			gotoMyTask(){
@@ -37,8 +46,26 @@
 				uni.navigateTo({
 					url:'/pages/admin/inviteFriends/inviteFriends'
 				})
+			},
+			async getUserInfo(){
+				const res = await this.$myRequest({
+					url:'/personCenter',
+					data:{user_id:`${this.$store.state.userInfo.user_id}`}
+				})
+				this.userInfo = res.data.data
 			}
-			
+		},
+		onLoad() {
+			//切换到个人中心就获取数据
+			this.getUserInfo()
+			console.log('onload')
+		},
+		//小程序不支持activated
+		// activated() {
+		// 	console.log('activated_admin')
+		// },
+		updated() {
+			console.log('updated_admin')
 		}
 	}
 </script>
@@ -50,15 +77,30 @@
 		border-bottom: 30rpx solid #f2f2f2;
 		display: flex;
 		padding: 60rpx;
-		.img{
-			width: 140rpx;
-			height: 140rpx;
-			border: 1px solid #f2f2f2;
-			border-radius: 60rpx;
-			background: url(../../static/img/icon/tab2.png) no-repeat center center;
-			background-color: #f2f2f2;
-			background-size: cover;
-			margin: 5px 10px 5px 0;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		.left{
+			.text1{
+				display: block;
+				font-size: $font-size-16;
+				font-weight: 500;
+				margin-bottom: 30rpx;
+			}
+			.text2{
+				display: block;
+				font-size: $font-size-14;
+			}
+		}
+		.right{
+			.img{
+				width: 60rpx;
+				height: 60rpx;
+			}
+			.text{
+				font-size: $font-size-14;
+				color: $green-bg-color;
+			}
 		}
 	}
 	.content{

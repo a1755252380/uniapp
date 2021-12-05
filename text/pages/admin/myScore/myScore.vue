@@ -2,7 +2,7 @@
 	<view>
 		<view class="head">
 			<image src="../../../static/img/icon/scoreLogo.svg" mode="" class="img"></image>
-			<text class="num">5</text>
+			<text class="num">{{score}}</text>
 			<text class="score">可用积分</text>
 		</view>
 		<view class="centerBox">
@@ -22,7 +22,7 @@
 	export default {
 		data() {
 			return {
-				
+				score:0,
 			}
 		},
 		methods: {
@@ -46,6 +46,20 @@
 					url:'/pages/admin/myScore/withdrawalRecord'
 				})
 			},
+			async getScore(){
+				const res = await this.$myRequest({
+					url:'/myScore',
+					data:{user_id:`${this.$store.state.userInfo.user_id}`},
+				})
+				this.score = res.data.data.score
+			}
+		},
+		onLoad(){
+			this.getScore()
+		},
+		updated() {
+			console.log('updated_MyScore')
+			this.getScore()
 		}
 	}
 </script>
