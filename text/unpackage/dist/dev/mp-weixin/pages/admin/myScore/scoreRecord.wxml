@@ -1,1 +1,1 @@
-<view class="main"><nav-bar vue-id="289d2fd5-1" bind:__l="__l"></nav-bar><fab vue-id="289d2fd5-2" bind:__l="__l"></fab></view>
+<view class="main"><nav-bar vue-id="289d2fd5-1" data1="{{data1}}" data-event-opts="{{[['^receiptType',[['receiptType']]]]}}" bind:receiptType="__e" bind:__l="__l"></nav-bar><fab vue-id="289d2fd5-2" bind:__l="__l"></fab></view>

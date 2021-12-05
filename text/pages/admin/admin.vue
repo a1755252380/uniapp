@@ -93,6 +93,9 @@
 			}
 		}
 		.right{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 			.img{
 				width: 60rpx;
 				height: 60rpx;

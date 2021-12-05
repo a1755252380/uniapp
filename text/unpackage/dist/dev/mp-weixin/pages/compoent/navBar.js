@@ -140,6 +140,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 var _default =
 {
+  props: ["data1"],
   data: function data() {
     return {
       items: ['本周', '本月', '本年'],
@@ -150,6 +151,7 @@ var _default =
   methods: {
     pageIndex: function pageIndex(i) {
       this.current = i;
+
     } } };exports.default = _default;
 
 /***/ }),
