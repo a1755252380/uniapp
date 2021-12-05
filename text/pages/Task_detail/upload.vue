@@ -1,7 +1,7 @@
 <template>
 	<view class="">
-		<view class="data_view" v-for="(item, index) in uploadnum" :key="index">
-			<view class="usertitle1">账号{{ item.num }}完成截图</view>
+		<view class="data_view" v-for="(item, index) in img_data" :key="index">
+			<view class="usertitle1">账号{{ index }}完成截图</view>
 			<view class="usertitle2">
 				<view class="img_writer">
 					<view>主页点赞图</view>
@@ -9,15 +9,15 @@
 				</view>
 				<view class="img">
 					<uni-file-picker
-						v-model="item.Likeimg"
+						v-model="item.home"
 						file-mediatype="image"
 						mode="grid"
 						file-extname="png,jpg"
 						:limit="1"
 						@progress="progress"
-						@success="success"
+						@success="uploadsuccess"
 						@fail="fail"
-						@select="select"
+						@select="uploadpricture"
 						:image-styles="imageStyles"
 					/>
 				</view>
@@ -29,7 +29,7 @@
 				</view>
 				<view class="img">
 					<uni-file-picker
-						v-model="item.Commentimg"
+						v-model="item.comment"
 						file-mediatype="image"
 						mode="grid"
 						file-extname="png,jpg"
@@ -37,7 +37,7 @@
 						@progress="progress"
 						@success="success"
 						@fail="fail"
-						@select="select"
+						@select="uploadpricture"
 						:image-styles="imageStyles"
 					/>
 				</view>
@@ -58,7 +58,10 @@
 export default {
 	data() {
 		return {
-			uploadnum: [{ num: '1' ,Likeimg:[],Commentimg:[]}],
+			id:0,
+			img_data: {
+				0:{home:[],comment:[]}
+			},
 			num:1,
 			imageStyles: {
 				width: 96,
@@ -67,12 +70,63 @@ export default {
 			}
 		};
 	},
+	onLoad() {
+		const eventChannel = this.getOpenerEventChannel();
+		 let that=this
+		// 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+		  eventChannel.on('upload', async function(data) {
+		    // console.log(data)
+			that.id=data
+		
+		})
+	},
 	methods:{
-		adduser(){
-			this.uploadnum.push({ num: ++this.num ,Likeimg:[],Commentimg:[]})
+		
+		//添加用户上传  与后台名额进行校对 看是否才超出现有名额
+		 async adduser(){
+			 await this.$myRequest({
+				url:'/taskRecordNum',
+				method:'POST',
+				data:{
+				id:this.id
+				}
+			}).then((res)=>{
+				console.log(res)
+				if(this.num<res.data.data.count){
+					// let a=++this.num
+					// Object.assign(this.img_data,{a:{home:[],comment:[]}})
+					this.img_data[this.num++]={home:[],comment:[]}
+					console.log(this.img_data)
+					this.$forceUpdate()
+				}else{
+					uni.showToast({
+						title:'无法添加更多'
+					})
+				}
+			})
+			
+			
+		
+		},
+		//图片上传获取图片信息
+		async uploadpricture(e){
+			console.log(e.tempFilePaths[0])
+			await this.$myRequest({
+				url:'/uploadImg',
+				method:'POST',
+				data:{
+				Img_data:e.tempFilePaths[0]
+				}
+			}).then((res)=>{
+				console.log(res)
+				
+			})
+		},
+		uploadsuccess(e){
+			console.log(e)
 		}
-	}
-};
+	},
+}
 </script>
 
 <style lang="scss" scoped>

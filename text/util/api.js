@@ -15,6 +15,8 @@ const myRequest = (options) =>{
 					resolve(res)
 					
 				}else{
+					console.log(res)
+					console.log("请求错误")
 					uni.showToast({
 						title:res.data.msg
 					})

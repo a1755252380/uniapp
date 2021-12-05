@@ -1,35 +1,34 @@
 <template>
 	<view class="detail_view">
-		<!-- <uni-nav-bar left-icon="back" left-text="返回"  title="导航栏组件"></uni-nav-bar> -->
 
 		<view class="row">
 			<uni-row class="row2">
 				<uni-col :span="6"><view class="col_writer">任务标题</view></uni-col>
-				<uni-col :span="18"><view class="col_writer2">测试，请勿操作</view></uni-col>
+				<uni-col :span="18"><view class="col_writer2">{{detaildata.title}}</view></uni-col>
 			</uni-row>
 		</view>
 		<view class="row">
 			<uni-row>
 				<uni-col :span="6"><view class="col_writer">任务分类</view></uni-col>
-				<uni-col :span="18"><view class="col_writer2">快手</view></uni-col>
+				<uni-col :span="18"><view class="col_writer2">{{detaildata.type}}</view></uni-col>
 			</uni-row>
 		</view>
 		<view class="row">
 			<uni-row>
 				<uni-col :span="6"><view class="col_writer">奖励积分</view></uni-col>
-				<uni-col :span="18"><view class="col_writer2">1积分</view></uni-col>
+				<uni-col :span="18"><view class="col_writer2">{{detaildata.integral}}</view></uni-col>
 			</uni-row>
 		</view>
 		<view class="row">
 			<uni-row>
 				<uni-col :span="6"><view class="col_writer">任务名额</view></uni-col>
-				<uni-col :span="18"><view class="col_writer2">1/1</view></uni-col>
+				<uni-col :span="18"><view class="col_writer2">{{detaildata.count}}/{{detaildata.quota}}</view></uni-col>
 			</uni-row>
 		</view>
 		<view class="row">
 			<uni-row>
 				<uni-col :span="6"><view class="col_writer">截止时间</view></uni-col>
-				<uni-col :span="18"><view class="col_writer2">00天0-4小时0-25分截至</view></uni-col>
+				<uni-col :span="18"><view class="col_writer2">{{detaildata.end_time}}截至</view></uni-col>
 			</uni-row>
 		</view>
 		<view class="row">
@@ -40,11 +39,11 @@
 					一键复制
 				</view>
 			</view>
-			<view class="col_copy">我的口令就是这个东西</view>
+			<view class="col_copy">{{detaildata.task_link}}</view>
 		</view>
 		<view class="row">
 			<view class="col_copy">任务要求</view>
-			<view class="col_copy">测试</view>
+			<view class="col_copy">{{detaildata.requirement}}</view>
 		</view>
 		<uni-popup ref="popup" type="uni-popup-dialog"><uni-popup-dialog mode="base" message="复制成功!" :duration="2000" :before-close="true"></uni-popup-dialog></uni-popup>
 		<view class="btn_upload" @click="btnupload" hover-class="btn_upload_hover" hover-start-time=5 hover-stay-time=30>上传截图</view>
@@ -54,6 +53,33 @@
 <script>
 export default {
 	options: { styleIsolation: 'shared' },
+	data() {
+		return {
+			detaildata:{}
+		}
+	},
+   onLoad() {
+		const eventChannel = this.getOpenerEventChannel();
+		 let that=this
+		// 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
+		  eventChannel.on('aa', async function(data) {
+		    console.log(data)
+			
+			//跳转完成请求任务详细数据
+			await that.$myRequest({
+				url:'/taskDetail',
+				method:'POST',
+				data:{
+				id:data
+				},
+			}).then((res)=>{
+				console.log(res.data.data[0])
+				that.detaildata=res.data.data[0]
+				console.log(that.detaildata)
+			})
+		  })
+		
+	},
 	methods: {
 		copy(value) {
 			uni.setClipboardData({
@@ -86,8 +112,13 @@ export default {
 		
 		//点击上传截图跳转
 		btnupload(){
+			let da=this.detaildata.id
 			uni.navigateTo({
-				url:"/pages/Task_detail/upload"
+				url:"/pages/Task_detail/upload",
+				success: function(res) {
+				    // 通过eventChannel向被打开页面传送数据
+				    res.eventChannel.emit('upload',da )
+				  }
 			})
 		}
 	}

@@ -1,5 +1,5 @@
 <template>
-	<view class="content"><toptab :more="more" :data1="data1" :data2="data2" :data3="data3" @Receivetype="Receivetype"></toptab>
+	<view class="content"><toptab :more="more" :modedata="loadedata"  @Receivetype="Receivetype"></toptab>
 	<fad></fad></view>
 </template>
 
@@ -10,14 +10,33 @@
 
 export default {
 	data() {
-		const data = { type: '快', title: '测试1', num: '1', time: '00天18小时44分截至', fenshu: '1积分', baifenbi: '10' };
+		
 		return {
-			type: 0,
+			type: "快手",
 			more: 'more',
-			data1: new Array(15).fill(data),
-			data2: new Array(8).fill(data),
-			data3: new Array(5).fill(data)
-		};
+			//缓存数据
+			data1: {
+				"快手":{
+					data:[],
+					Page:1
+				},
+				"抖音":{
+					data:[],
+					Page:1
+				},
+				"小红书":{
+					data:[],
+					Page:1
+				}
+				
+			},
+			
+			
+			//加载页数
+			loadpage:1,
+			//数据展示
+			loadedata:[]
+		}
 	},
 	onLoad() {
 		//判断登陆状态
@@ -25,38 +44,59 @@ export default {
 			uni.reLaunch({
 				url:'/pages/login/login'
 			})
+		}else{
+			this.loaddata()
 		}
 		//一登陆成功就请求用户的相关数据
 	},
 	onReachBottom() {
 		console.log('加载');
-		if (this.type === 0) {
-			this.more = 'loading';
-			for (let i = 0; i <= 10; i++) {
-				this.data1.push({ type: '慢', title: '测试2', num: '1', time: '00天18小时44分截至', fenshu: '1积分', baifenbi: '10' });
-			}
 
-			setTimeout(() => {
-				this.more = 'noMore';
-			}, 3000);
-		} else if (this.type === 1) {
 			this.more = 'loading';
+			this.data1[this.type].Page++
+			this.loadpage++
+			this.loaddata()
 			setTimeout(() => {
 				this.more = 'noMore';
-			}, 3000);
-		} else if (this.type === 2) {
-			this.more = 'loading';
-			setTimeout(() => {
-				this.more = 'noMore';
-			}, 3000);
-		}
+			}, 1500);
+		
 	},
 	methods: {
 		//接收传过来的是哪种类型
 		Receivetype(type) {
 			this.type = type;
+			this.loadpage=this.data1[type].Page
+			console.log(this.type)
+			if(this.data1[type].data.length==0){
+				this.loaddata()
+			}else{
+				this.loadedata=this.data1[this.type].data
+			}
+			
 			this.more = 'more';
 		},
+		
+		//加载数据
+		async loaddata(){
+			await this.$myRequest({
+				url:'/taskList',
+				method:'POST',
+				data:{
+				user_id:this.$store.state.userInfo.user_id,
+					type:this.type,
+					page:this.loadpage,
+					limit:10
+				},
+			}).then((res)=>{
+				console.log(res)
+				for(let i=0;i<res.data.data.dataArr.length;i++){
+					this.data1[this.type].data.push(res.data.data.dataArr[i])
+				}
+				
+				this.loadedata=this.data1[this.type].data
+			
+			})
+		}
 	},
 	components: {
 		toptab,fad

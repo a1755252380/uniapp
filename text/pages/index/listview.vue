@@ -6,22 +6,22 @@
 				<view class="left">
 					<text class="title">【{{item.type}} 】 {{item.title}}</text>
 					<view class="num">
-						<text >{{item.num}}名</text>
+						<text >{{item.quota}}名</text>
 						<view class="jd" style="display: inline-block;">
 							<view :style='{"background":"#5EAE3D",
 							"border-radius": "5rpx",
-							"height":"100%","width":item.baifenbi+"%"}'></view>
+							"height":"100%","width":item.percent+"%"}'></view>
 							
 						</view>
-						<text>&nbsp;&nbsp;&nbsp;{{item.baifenbi}}%</text>
+						<text>&nbsp;&nbsp;&nbsp;{{item.percent}}%</text>
 					</view>
 				</view>
 		       
 		    </uni-col>
 		    <uni-col :span="10" >
 				<view class="right">
-					<view class="integration">{{item.fenshu}}</view>
-					<view class="time">{{item.time}}</view>
+					<view class="integration">{{item.integral|integtral}}</view>
+					<view class="time">{{item.end_time}}</view>
 				</view>
 		       
 		    </uni-col>
@@ -39,6 +39,11 @@
 			  item(){
 				  return  this.item2
 			  }
+		  },
+		  filters: {
+		  	integtral: function(value) {
+		  		return value+"积分";
+		  	}
 		  }
 	  }
 </script>

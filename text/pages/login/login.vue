@@ -77,7 +77,7 @@
 			},
 			gotoRegister(){
 				uni.navigateTo({
-					url: '/pages/login/registerPage/registerPage'
+					url: ' '
 				})
 			},
 			gotoForget(){
@@ -92,17 +92,20 @@
 					url:'/login',
 					method:'POST',
 					data:this.info,
-				})
-				//接受到user_id后，然后将id返回给vuex
-				this.$store.commit('setUpUserId',res.data.data.user_id)
-				uni.showToast({
-					title:res.data.msg
-				})
-				setTimeout(()=>{
-					uni.switchTab({
-						url:'/pages/index/index'
+				}).then((res)=>{
+					// console.log(res)
+					//接受到user_id后，然后将id返回给vuex
+					this.$store.commit('setUpUserId',res.data.data.user_id)
+					uni.showToast({
+						title:res.data.msg
 					})
-				},1200)
+					setTimeout(()=>{
+						uni.switchTab({
+							url:'/pages/index/index'
+						})
+					},1200)
+					
+				})
 				
 			}
 		}
