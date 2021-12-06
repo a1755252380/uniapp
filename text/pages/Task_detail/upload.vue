@@ -9,7 +9,6 @@
 				</view>
 				<view class="img">
 					<uni-file-picker
-						v-model="item.home"
 						file-mediatype="image"
 						mode="grid"
 						file-extname="png,jpg"
@@ -17,8 +16,9 @@
 						@progress="progress"
 						@success="uploadsuccess"
 						@fail="fail"
-						@select="uploadpricture"
+						@select="uploadpricture1($event,index)"
 						:image-styles="imageStyles"
+						:del-icon="false"
 					/>
 				</view>
 			</view>
@@ -29,7 +29,6 @@
 				</view>
 				<view class="img">
 					<uni-file-picker
-						v-model="item.comment"
 						file-mediatype="image"
 						mode="grid"
 						file-extname="png,jpg"
@@ -37,8 +36,9 @@
 						@progress="progress"
 						@success="success"
 						@fail="fail"
-						@select="uploadpricture"
+						@select="uploadpricture2($event,index)"
 						:image-styles="imageStyles"
+						:del-icon="false"
 					/>
 				</view>
 			</view>
@@ -47,7 +47,7 @@
 			<view class="btn btn_add" hover-class="btn_hover" hover-start-time=5 hover-stay-time=30 @click="adduser"> 
 				新增
 			</view>
-			<view class="btn btn_upload" hover-class="btn_hover" hover-start-time=5 hover-stay-time=30>
+			<view class="btn btn_upload" hover-class="btn_hover" hover-start-time=5 hover-stay-time=30 @click="change">
 				提交
 			</view>
 		</view>
@@ -55,19 +55,22 @@
 </template>
 
 <script>
+	import {encryptDes} from "../../static/js/DES.js"
 export default {
 	data() {
 		return {
 			id:0,
 			img_data: {
-				0:{home:[],comment:[]}
+				0:{home:[],comment:[]},
 			},
 			num:1,
 			imageStyles: {
 				width: 96,
 				height: 96,
 			
-			}
+			},
+			//是否重复提交
+			haveRecord:false
 		};
 	},
 	onLoad() {
@@ -108,21 +111,137 @@ export default {
 			
 		
 		},
-		//图片上传获取图片信息
-		async uploadpricture(e){
-			console.log(e.tempFilePaths[0])
-			await this.$myRequest({
-				url:'/uploadImg',
+		//提交数据
+		 Submit(){
+			console.log(JSON.stringify(this.img_data))
+			console.log(this.id)
+			console.log(this.$store.state.userInfo.user_id)
+			uni.request({
+				url:'https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi/submitTask',
 				method:'POST',
 				data:{
-				Img_data:e.tempFilePaths[0]
+				id:this.id,
+				user_id:this.$store.state.userInfo.user_id,
+				img_data:JSON.stringify(this.img_data)
+				},
+				header:encryptDes(),
+				success:(res)=>{
+					console.log(res)
+					
+						uni.showToast({
+							title:'提交成功'
+						})
+					
 				}
-			}).then((res)=>{
-				console.log(res)
-				
 			})
+			
+			
+			
+		},
+		//提交前校验是否重复提交
+		 change(){
+			uni.request({
+				url:'https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi/haveTaskRecord',
+				method:'POST',
+				data:{
+				id:this.id,
+				user_id:this.$store.state.userInfo.user_id
+				},
+				header:encryptDes(),
+				success: res => {
+					if(res.data.code === 1 || res.data.code === 200){
+						console.log(res)
+						if(res.data.data.haveRecord==1){
+							uni.showToast({
+								title:"请勿重复提交！！"
+							})
+							setTimeout(function() {
+								uni.navigateTo({
+									url:"pages/index/index"
+								})
+							}, 1500);
+						}else if(res.data.data.haveRecord==2){
+							this.Submit()
+						}else if(res.data.data.haveRecord==3){
+							uni.showToast({
+								title:"名额已满！！"
+							})
+							setTimeout(function() {
+								uni.navigateTo({
+									url:"pages/index/index"
+								})
+							}, 1500);
+						}else if(res.data.data.haveRecord==4){
+							uni.showToast({
+								title:"任务已结束"
+							})
+							setTimeout(function() {
+								uni.navigateTo({
+									url:"pages/index/index"
+								})
+							}, 1500);
+						}
+					}else{
+						console.log(res)
+						console.log("请求错误")
+						uni.showToast({
+							title:res.data.msg
+						})
+						
+					}
+				},
+				fail: (err) => {
+					uni.showToast({
+						title:'接口请求失败'
+					})
+					reject(err)
+				}
+			})
+		
+		},
+		
+		//图片上传获取图片信息  主页图片获取图片连接
+		async uploadpricture1(e,index){
+			// console.log(e)
+			// console.log(index)
+			uni.uploadFile({
+		            url: 'https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi/uploadImg', //仅为示例，非真实的接口地址
+		            filePath: e.tempFilePaths[0],
+		            name: 'img_data',
+		            formData: {
+		                'img_data': e.tempFilePaths[0]
+		            },
+		            success: (uploadFileRes) => {
+		                let a=JSON.parse(uploadFileRes.data)
+						this.img_data[index]['home'].push(a.data.img_url)
+						// console.log(this.img_data[index]['home'])
+		            }
+		        });
+		    
+		},
+		//评论截图获取链接
+		async uploadpricture2(e,index){
+			// console.log(e)
+			// console.log(index)
+			uni.uploadFile({
+		            url: 'https://wemall.minephone.com/openTask/qq_operTask/backend/public/index.php/api/Ajaxapi/uploadImg', //仅为示例，非真实的接口地址
+		            filePath: e.tempFilePaths[0],
+		            name: 'img_data',
+		            formData: {
+		                'img_data': e.tempFilePaths[0]
+		            },
+		            success: (uploadFileRes) => {
+		               let a=JSON.parse(uploadFileRes.data)
+		               this.img_data[index]['comment'].push(a.data.img_url)
+		               // console.log(this.img_data)							
+		            }
+		        });
+		    
 		},
 		uploadsuccess(e){
+			console.log(e)
+		},
+		progress(e){
 			console.log(e)
 		}
 	},
